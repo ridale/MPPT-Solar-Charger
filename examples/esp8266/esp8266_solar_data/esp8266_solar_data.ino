@@ -28,20 +28,22 @@
 #include "Adafruit_MQTT_Client.h"
 #include <ESP8266WiFi.h>
 #include <mpptChg.h>
+#include "arduino_secrets.h"
 
 
 // ========================================================================
 // User parameters - configure this section for your WiFi and Adafruit info
 //
-// WiFi parameters - replace the strings with your network's credentials
-#define WLAN_SSID       "WLAN_SSID"
-#define WLAN_PASS       "WLAN_PASS"
+// WiFi parameters - defined in arduino_secrets.h
+//#define WLAN_SSID
+//#define WLAN_PASS
 
 // Adafruit IO -  replace the USERNAME and KEY with your account info
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883
-#define AIO_USERNAME    "AIO_USERNAME"  // Obtained from account info on io.adafruit.com
-#define AIO_KEY         "AIO_KEY"       // Obtained from account info on io.adafruit.com
+// adafruit IO parameters - defined in arduino_secrets.h
+//#define AIO_USERNAME // Obtained from account info on io.adafruit.com
+//#define AIO_KEY      // Obtained from account info on io.adafruit.com
 
 
 
@@ -152,7 +154,7 @@ void loop() {
   // Push one data value every 2 seconds (so not to overrun the free version of IO)
   for (i=0; i<NUM_FEEDS; i++) {
     publish_data(i);
-    delay(2000);
+    delay(10000);
   }
 }
 
@@ -279,4 +281,3 @@ void publish_data(int i) {
       break;
   }
 }
-
